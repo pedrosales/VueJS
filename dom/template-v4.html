@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" :class="class1">
+    <p>{{ title }}</p>
+    <p c3r-bind="coder()">{{ saudacao() }}</p>
+    <a :href="link" :hidden="disabled">Google</a>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            title: "VueJS!",
+            class1: "active",
+            link: "http://google.com.br",
+            disabled: false
+        },
+        methods: {
+            saudacao: function () {
+                console.log(this);
+                return this.title;
+            },
+            coder() {
+                console.log("Oi");
+            }
+        }
+    });
+</script>

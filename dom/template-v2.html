@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" :class="class1">
+    <p>{{ title }}</p>
+    <p>{{ saudacao() }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            title: "VueJS!",
+            class1: "active"
+        },
+        methods: {
+            saudacao: function () {
+                return "Boa Semana";
+            }
+        }
+    });
+</script>
