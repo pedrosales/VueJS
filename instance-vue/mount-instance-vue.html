@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+
+</div>
+
+<script>
+    const vm = new Vue({
+        template: `
+            <div>
+                <h1>{{ vueClass }}</h1>
+                <h2>{{ module }}</h2>
+                <button @click="changeClass">Change Class</button>
+                <button @click="changeModule">Change Module</button>
+            </div>
+        `,
+        data: {
+            vueClass: "Mounting Vue Instance",
+            module: "Module: Vue instance"
+        },
+        methods: {
+            changeClass() {
+                this.vueClass += "#";
+            },
+            changeModule() {
+                this.module += "#";
+            }
+        }
+    });
+
+    // vm.$mount("#app");
+
+    vm.$mount();
+    document.querySelector("#app").appendChild(vm.$el);
+</script>
