@@ -8,7 +8,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="user in users" :key="user.id" @click="selectUser(user)">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
         </tr>
@@ -18,8 +18,15 @@
 </template>
 
 <script>
+import userBus from "@/user-bus.js";
+
 export default {
   props: { users: Array },
+  methods: {
+    selectUser(user) {
+      userBus.selectUser(user);
+    },
+  },
 };
 </script>
 

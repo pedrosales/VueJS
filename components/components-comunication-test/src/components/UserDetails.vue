@@ -10,11 +10,18 @@
 </template>
 
 <script>
+import userBus from "@/user-bus.js";
+
 export default {
   data() {
     return {
       user: null,
     };
+  },
+  created() {
+    userBus.onUserSelected((user) => {
+      this.user = user;
+    });
   },
 };
 </script>
