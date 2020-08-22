@@ -4,7 +4,11 @@
       <button @click="number--">&lt;</button>
       <button @click="number++">&gt;</button>
     </span>
-    <Quote :quote="quotes[index]" />
+    <Quote>
+      <h1>{{ quotes[index].author }}</h1>
+      <p>{{ quotes[index].text }}</p>
+      <h6>{{ quotes[index].source }}</h6>
+    </Quote>
   </div>
 </template>
 

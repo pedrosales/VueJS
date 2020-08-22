@@ -1,6 +1,6 @@
 <template>
   <div class="quote">
-    <p>{{ quote.text }}</p>
+    <slot></slot>
   </div>
 </template>
 
