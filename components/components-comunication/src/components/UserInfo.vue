@@ -46,7 +46,7 @@ export default {
     },
   },
   created() {
-    bus.$on("ageChanged", (age) => {
+    bus.onAgeChange((age) => {
       this.age = age;
     });
   },

@@ -21,7 +21,7 @@ export default {
   methods: {
     editAge() {
       this.age += 1;
-      bus.$emit("ageChanged", this.age);
+      bus.changeAge(this.age);
     },
   },
 };
