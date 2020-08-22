@@ -1,7 +1,7 @@
 <template>
-  <div class="componente">
-    <h2>Alterar os Dados de Usuário</h2>
-    <p>Edite as informações</p>
+  <div class="component">
+    <h2>Edit User Information</h2>
+    <p>edit informations</p>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {};
 </script>
 
 <style scoped>
-.componente {
+.component {
   flex: 1;
   background-color: #98b99a;
   color: #fff;

@@ -1,7 +1,7 @@
 <template>
-  <div class="componente">
-    <h2>As Informações de Usuário</h2>
-    <p>Vários detalhes...</p>
+  <div class="component">
+    <h2>User Info</h2>
+    <p>More Details</p>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {};
 </script>
 
 <style scoped>
-.componente {
+.component {
   flex: 1;
   background-color: #ec485f;
   color: #fff;
