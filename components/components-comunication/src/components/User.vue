@@ -9,7 +9,7 @@
     <button @click="changeName">Change Name</button>
     <hr />
     <div class="components">
-      <app-user-info :name="name" @nameChanged="name = $event.newName" />
+      <app-user-info :name="name" @nameChanged="name = $event.newName" :resetNameFn="resetName" />
       <app-edit-user />
     </div>
   </div>
@@ -32,6 +32,9 @@ export default {
   methods: {
     changeName() {
       this.name = "Ana";
+    },
+    resetName() {
+      this.name = "Pedro";
     },
   },
 };

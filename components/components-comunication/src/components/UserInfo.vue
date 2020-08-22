@@ -7,6 +7,7 @@
       <strong>{{ reverseName() }}</strong>
     </p>
     <button @click="restartName">Restart Name</button>
+    <button @click="resetNameFn()">Reset Name Func</button>
   </div>
 </template>
 
@@ -21,6 +22,7 @@ export default {
       //   return Array(10).fill(0).join(",");
       // },
     },
+    resetNameFn: Function,
   },
   methods: {
     reverseName() {
