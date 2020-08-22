@@ -5,9 +5,9 @@
       <button @click="number++">&gt;</button>
     </span>
     <Quote>
-      <h1>{{ quotes[index].author }}</h1>
-      <p>{{ quotes[index].text }}</p>
-      <h6>{{ quotes[index].source }}</h6>
+      <h1 slot="author">{{ quotes[index].author }}</h1>
+      <p slot="text">{{ quotes[index].text }}</p>
+      <h6 slot="source">{{ quotes[index].source }}</h6>
     </Quote>
   </div>
 </template>

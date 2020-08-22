@@ -1,6 +1,8 @@
 <template>
   <div class="quote">
-    <slot></slot>
+    <slot name="source"></slot>
+    <slot name="text"></slot>
+    <slot name="author"></slot>
   </div>
 </template>
 
