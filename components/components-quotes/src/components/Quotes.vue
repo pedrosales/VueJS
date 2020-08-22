@@ -4,12 +4,15 @@
       <button @click="number--">&lt;</button>
       <button @click="number++">&gt;</button>
     </span>
-    {{ number }} {{ index }}
+    <Quote :quote="quotes[index]" />
   </div>
 </template>
 
 <script>
+import Quote from "./Quote.vue";
+
 export default {
+  components: { Quote },
   data() {
     return {
       number: 0,
