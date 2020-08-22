@@ -1,8 +1,10 @@
 <template>
   <div class="quote">
     <slot name="source"></slot>
-    <slot name="text"></slot>
-    <slot name="author"></slot>
+    <slot></slot>
+    <div class="author">
+      <slot name="author"></slot>
+    </div>
   </div>
 </template>
 
@@ -18,5 +20,9 @@ export default {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 25px;
   max-width: 450px;
+}
+
+.author {
+  float: right;
 }
 </style>
