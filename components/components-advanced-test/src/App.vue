@@ -1,14 +1,24 @@
 <template>
   <div id="app">
     <span>
-      <button class="red">Load Red Component</button>
-      <button class="green">Load Green Component</button>
-      <button class="blue">Load Blue Component</button>
+      <button @click="activeComponent = 'Red'" class="red">Load Red Component</button>
+      <button @click="activeComponent = 'Green'" class="green">Load Green Component</button>
+      <button @click="activeComponent = 'Blue'" class="blue">Load Blue Component</button>
     </span>
-
-    <Red />
-    <Green />
-    <Blue />
+    <component :is="activeComponent">
+      <span>
+        <strong>{{ activeComponent }}</strong> Box Content
+      </span>
+    </component>
+    <!-- <Red>
+      <p>Red Box Content</p>
+    </Red>
+    <Green>
+      <p>Green Box Content</p>
+    </Green>
+    <Blue>
+      <p>Blue Box Content</p>
+    </Blue>-->
   </div>
 </template>
 
@@ -20,6 +30,11 @@ import Blue from "./components/Blue.vue";
 export default {
   name: "app",
   components: { Red, Green, Blue },
+  data() {
+    return {
+      activeComponent: "",
+    };
+  },
 };
 </script>
 

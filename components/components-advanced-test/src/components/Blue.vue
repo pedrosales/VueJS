@@ -1,5 +1,7 @@
 <template>
-  <div class="box blue">Blue box content</div>
+  <div class="box blue">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
