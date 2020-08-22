@@ -14,7 +14,7 @@
     <hr />
     <div class="components">
       <app-user-info :name="name" :age="age" @nameChanged="name = $event" :resetNameFn="resetName" />
-      <app-edit-user @ageChanged="age = $event" :age="age" :changeAgeFn="changeAge" />
+      <app-edit-user :age="age" />
     </div>
   </div>
 </template>

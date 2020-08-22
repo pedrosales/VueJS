@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import bus from "@/bus";
+
 export default {
   props: {
     name: {
@@ -42,6 +44,11 @@ export default {
       // });
       this.$emit("nameChanged", "Pedro");
     },
+  },
+  created() {
+    bus.$on("ageChanged", (age) => {
+      this.age = age;
+    });
   },
 };
 </script>

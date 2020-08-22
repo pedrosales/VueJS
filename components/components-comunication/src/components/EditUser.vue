@@ -7,11 +7,12 @@
       <strong>{{ age }}</strong>
     </p>
     <button @click="editAge">Edit age</button>
-    <button @click="changeAgeFn">Edit Age Callback</button>
   </div>
 </template>
 
 <script>
+import bus from "@/bus";
+
 export default {
   props: {
     age: Number,
@@ -19,8 +20,8 @@ export default {
   },
   methods: {
     editAge() {
-      this.age = 33;
-      this.$emit("ageChanged", this.age);
+      this.age += 1;
+      bus.$emit("ageChanged", this.age);
     },
   },
 };
