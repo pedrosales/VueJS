@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <Quotes />
-    <About />
+    <span>
+      <button @click="component = 'Quotes'">Quotes</button>
+      <button @click="component = 'About'">About</button>
+    </span>
+    <keep-alive>
+      <component :is="component" />
+    </keep-alive>
   </div>
 </template>
 
@@ -11,6 +16,11 @@ import About from "./components/Aboute.vue";
 
 export default {
   components: { Quotes, About },
+  data() {
+    return {
+      component: "Quotes",
+    };
+  },
 };
 </script>
 

@@ -45,6 +45,12 @@ export default {
       return Math.abs(this.number % 3);
     },
   },
+  activated() {
+    console.log("activated");
+  },
+  deactivated() {
+    console.log("deactivated");
+  },
 };
 </script>
 
