@@ -44,5 +44,6 @@ td {
 
 tbody tr:hover {
   background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 </style>
