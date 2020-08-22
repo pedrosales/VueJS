@@ -2,9 +2,10 @@
   <div class="container">
     <h1>User Component</h1>
     <p>This is an cool component!!</p>
+    <button @click="changeName">Change Name</button>
     <hr />
     <div class="components">
-      <app-user-info />
+      <app-user-info :name="name" />
       <app-edit-user />
     </div>
   </div>
@@ -18,6 +19,16 @@ export default {
   components: {
     AppUserInfo,
     AppEditUser,
+  },
+  data() {
+    return {
+      name: "Pedro",
+    };
+  },
+  methods: {
+    changeName() {
+      this.name = "Ana";
+    },
   },
 };
 </script>

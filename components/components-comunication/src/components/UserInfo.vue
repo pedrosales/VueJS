@@ -1,12 +1,18 @@
 <template>
   <div class="component">
     <h2>User Info</h2>
-    <p>More Details</p>
+    <p>More Details...</p>
+    <p>
+      User Name:
+      <strong>{{ name }}</strong>
+    </p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["name"],
+};
 </script>
 
 <style scoped>
