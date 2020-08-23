@@ -14,7 +14,7 @@
           <input type="number" v-model.number="user.age" />
         </Label>
         <Label name="Message">
-          <textarea name cols="30" rows="5"></textarea>
+          <textarea name cols="30" rows="5" v-model="message"></textarea>
         </Label>
         <Label name="Problem specs">
           <span class="mr-4">
@@ -58,7 +58,7 @@
           <span>{{ user.age }}</span>
         </Label>
         <Label name="Message">
-          <span>???</span>
+          <span style="white-space: pre;">{{ message }}</span>
         </Label>
         <Label name="Choice the options">
           <span>???</span>
@@ -86,6 +86,7 @@ export default {
   components: { SwitchSelector, Label },
   data() {
     return {
+      message: "",
       user: {
         email: "",
         password: "",
