@@ -1,16 +1,16 @@
 <template>
-  <div class="switch" @click="on = !on" :class="{on, off: !on }">
-    <div v-if="on" class="button"></div>
-    <div v-else class="button"></div>
+  <div class="switch" @click="$emit('input', !value)" :class="{on: value, off: !value }">
+    <div class="button"></div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      on: false,
-    };
+  props: {
+    value: {
+      type: Boolean,
+      required: true,
+    },
   },
 };
 </script>

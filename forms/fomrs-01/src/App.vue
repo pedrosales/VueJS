@@ -45,7 +45,7 @@
           </select>
         </Label>
         <Label name="First claim?">
-          <SwitchSelector />
+          <SwitchSelector :value="firstClaim" @input="firstClaim = $event" />
         </Label>
         <hr />
         <button>Send</button>
@@ -78,7 +78,7 @@
           <span>{{ priority }}</span>
         </Label>
         <Label name="First claim?">
-          <span>???</span>
+          <span>{{ firstClaim }}</span>
         </Label>
       </div>
     </div>
@@ -108,6 +108,7 @@ export default {
         password: "",
         age: 0,
       },
+      firstClaim: true,
     };
   },
 };
