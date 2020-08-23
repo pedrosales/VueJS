@@ -36,8 +36,12 @@
           </span>
         </Label>
         <Label name="Priority">
-          <select name id>
-            <option></option>
+          <select v-model="priority">
+            <option
+              v-for="priority in priorities"
+              :value="priority.id"
+              :key="priority.id"
+            >{{ priority.id }} - {{ priority.name }}</option>
           </select>
         </Label>
         <Label name="First claim?">
@@ -71,7 +75,7 @@
           <span>{{ product }}</span>
         </Label>
         <Label name="Priority">
-          <span>???</span>
+          <span>{{ priority }}</span>
         </Label>
         <Label name="First claim?">
           <span>???</span>
@@ -93,6 +97,12 @@ export default {
       message: "",
       features: [],
       product: "web",
+      priority: 1,
+      priorities: [
+        { id: 1, name: "Low" },
+        { id: 2, name: "Mid" },
+        { id: 3, name: "High" },
+      ],
       user: {
         email: "",
         password: "",
