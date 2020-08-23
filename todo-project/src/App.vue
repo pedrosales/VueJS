@@ -1,11 +1,46 @@
 <template>
   <div id="app">
     <h1>Todos</h1>
+    <todo-list :todos="todos" />
   </div>
 </template>
 
 <script>
-export default {};
+import TodoList from "./components/TodoList.vue";
+
+import todoBus from "./todo-bus";
+
+export default {
+  components: { TodoList },
+  data() {
+    return {
+      todos: [
+        {
+          id: 1,
+          name: "Procurar despachante",
+        },
+        {
+          id: 2,
+          name: "Comprar mala",
+        },
+        {
+          id: 3,
+          name: "Receber máquina nova",
+        },
+      ],
+    };
+  },
+  methods: {
+    deleteTodo(todoItem) {
+      this.todos = this.todos.filter((todo) => todo.id !== todoItem.id);
+    },
+  },
+  created() {
+    todoBus.onTodoDeleted((todoItem) => {
+      this.deleteTodo(todoItem);
+    });
+  },
+};
 </script>
 
 <style>
