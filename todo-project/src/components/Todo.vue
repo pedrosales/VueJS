@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card" dark>
+  <v-card class="card" dark :class="{done: todo.done}" @click="doneUndoneTodo">
     <v-card-actions class="card-actions">
       <v-icon @click="deleteTodo">mdi-delete</v-icon>
     </v-card-actions>
@@ -15,6 +15,9 @@ export default {
   methods: {
     deleteTodo() {
       todoBus.deleteTodo(this.todo);
+    },
+    doneUndoneTodo() {
+      this.todo.done = !this.todo.done;
     },
   },
 };
@@ -32,5 +35,9 @@ export default {
 
 .card-title {
   margin-top: 30px;
+}
+
+.done {
+  background-color: seagreen !important;
 }
 </style>
