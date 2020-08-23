@@ -5,13 +5,13 @@
       <form class="panel">
         <div class="header">Form</div>
         <Label name="E-mail">
-          <input type="email" v-model="user.email" />
+          <input type="email" v-model.lazy.trim="user.email" />
         </Label>
         <Label name="Password">
           <input type="password" v-model="user.password" />
         </Label>
         <Label name="Age">
-          <input type="number" v-model="user.age" />
+          <input type="number" v-model.number="user.age" />
         </Label>
         <Label name="Message">
           <textarea name cols="30" rows="5"></textarea>
