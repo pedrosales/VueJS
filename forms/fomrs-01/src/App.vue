@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Register your claim</h1>
     <div class="content">
-      <form class="panel">
+      <form class="panel" v-if="!submited">
         <div class="header">Form</div>
         <Label name="E-mail">
           <input type="email" v-model.lazy.trim="user.email" />
@@ -48,9 +48,9 @@
           <SwitchSelector :value="firstClaim" @input="firstClaim = $event" />
         </Label>
         <hr />
-        <button>Send</button>
+        <button @click.prevent="sendForm">Send</button>
       </form>
-      <div class="panel">
+      <div class="panel" v-else>
         <div class="header">Result</div>
         <Label name="E-mail">
           <span>{{user.email}}</span>
@@ -92,6 +92,11 @@ import Label from "./components/Label.vue";
 export default {
   name: "app",
   components: { SwitchSelector, Label },
+  methods: {
+    sendForm() {
+      this.submited = true;
+    },
+  },
   data() {
     return {
       message: "",
@@ -109,6 +114,7 @@ export default {
         age: 0,
       },
       firstClaim: true,
+      submited: false,
     };
   },
 };
