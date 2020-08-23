@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <h1>Register you claim</h1>
+    <h1>Register your claim</h1>
     <div class="content">
       <form class="panel">
         <div class="header">Form</div>
         <Label name="E-mail">
-          <input type="text" />
+          <input type="email" v-model="user.email" />
         </Label>
         <Label name="Password">
-          <input type="password" />
+          <input type="password" v-model="user.password" />
         </Label>
         <Label name="Age">
-          <input type="number" />
+          <input type="number" v-model="user.age" />
         </Label>
         <Label name="Message">
           <textarea name cols="30" rows="5"></textarea>
@@ -49,13 +49,13 @@
       <div class="panel">
         <div class="header">Result</div>
         <Label name="E-mail">
-          <span>???</span>
+          <span>{{user.email}}</span>
         </Label>
         <Label name="Password">
-          <span>???</span>
+          <span>{{ user.password }}</span>
         </Label>
         <Label name="Age">
-          <span>???</span>
+          <span>{{ user.age }}</span>
         </Label>
         <Label name="Message">
           <span>???</span>
@@ -84,6 +84,15 @@ import Label from "./components/Label.vue";
 export default {
   name: "app",
   components: { SwitchSelector, Label },
+  data() {
+    return {
+      user: {
+        email: "",
+        password: "",
+        age: 0,
+      },
+    };
+  },
 };
 </script>
 
