@@ -18,10 +18,10 @@
         </Label>
         <Label name="Problem specs">
           <span class="mr-4">
-            <input type="checkbox" value="reproducible" /> Reproducible
+            <input type="checkbox" value="reproducible" v-model="features" /> Reproducible
           </span>
           <span>
-            <input type="checkbox" value="intermitent" /> Intermitent
+            <input type="checkbox" value="intermitent" v-model="features" /> Intermitent
           </span>
         </Label>
         <Label name="Witch Product">
@@ -61,7 +61,11 @@
           <span style="white-space: pre;">{{ message }}</span>
         </Label>
         <Label name="Choice the options">
-          <span>???</span>
+          <span>
+            <ul>
+              <li v-for="f in features" :key="f">{{ f }}</li>
+            </ul>
+          </span>
         </Label>
         <Label name="Wich product?">
           <span>???</span>
@@ -87,6 +91,7 @@ export default {
   data() {
     return {
       message: "",
+      features: [],
       user: {
         email: "",
         password: "",
