@@ -26,13 +26,13 @@
         </Label>
         <Label name="Witch Product">
           <span class="mr-4">
-            <input type="radio" /> Web
+            <input type="radio" value="web" v-model="product" /> Web
           </span>
           <span class="mr-4">
-            <input type="radio" /> Mobile
+            <input type="radio" value="mobile" v-model="product" /> Mobile
           </span>
           <span>
-            <input type="radio" /> Other
+            <input type="radio" value="other" v-model="product" /> Other
           </span>
         </Label>
         <Label name="Priority">
@@ -68,7 +68,7 @@
           </span>
         </Label>
         <Label name="Wich product?">
-          <span>???</span>
+          <span>{{ product }}</span>
         </Label>
         <Label name="Priority">
           <span>???</span>
@@ -92,6 +92,7 @@ export default {
     return {
       message: "",
       features: [],
+      product: "web",
       user: {
         email: "",
         password: "",
