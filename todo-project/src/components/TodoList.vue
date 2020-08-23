@@ -1,43 +1,21 @@
 <template>
-  <div class="card">
-    <v-card class="card-body" v-for="todo in todos" :key="todo.id" dark>
-      <v-card-actions class="card-actions">
-        <v-icon @click="deleteTodo(todo)">mdi-delete</v-icon>
-      </v-card-actions>
-      <v-card-title class="card-title">{{ todo.name }}</v-card-title>
-    </v-card>
+  <div class="todos">
+    <Todo v-for="todo in todos" :key="todo.id" :todo="todo" />
   </div>
 </template>
 
 <script>
-import todoBus from "@/todo-bus";
+import Todo from "./Todo.vue";
 
 export default {
   props: { todos: Array },
-  methods: {
-    deleteTodo(todoItem) {
-      todoBus.deleteTodo(todoItem);
-    },
-  },
+  components: { Todo },
 };
 </script>
 
 <style>
-.card {
+.todos {
   display: flex;
-  height: 100px;
-}
-
-.card-body {
-  margin-left: 5px;
-  margin-right: 10px;
-}
-
-.card-actions {
-  float: right;
-}
-
-.card-title {
-  margin-top: 30px;
+  margin: 10px;
 }
 </style>
