@@ -3,7 +3,15 @@
     <v-container>
       <v-row>
         <v-col cols="12">
-          <v-text-field type="text" class="text-field" clearable outlined v-model="text">
+          <v-text-field
+            @keydown.prevent.enter="addTodo"
+            type="text"
+            class="text-field"
+            label="new task"
+            clearable
+            outlined
+            v-model="text"
+          >
             <template v-if="text" v-slot:append>
               <v-icon @click="addTodo">mdi-plus-box-outline</v-icon>
             </template>
@@ -34,7 +42,7 @@ export default {
 
 <style scoped>
 .text-field {
-  color: #fff;
-  width: 300px;
+  color: #aaa;
+  width: 400px;
 }
 </style>

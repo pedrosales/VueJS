@@ -1,6 +1,9 @@
 <template>
   <div class="todos">
-    <todo v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <template v-if="todos.length">
+      <todo v-for="todo in todos" :key="todo.name" :todo="todo" />
+    </template>
+    <p v-else class="no-todos">Sua vida está em dia!! =)</p>
   </div>
 </template>
 
@@ -17,5 +20,13 @@ export default {
 .todos {
   display: flex;
   margin: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: #aaa;
+}
+
+.no-todos {
+  color: #aaa;
+  font-size: 1.2rem;
 }
 </style>

@@ -17,7 +17,7 @@ export default {
       todoBus.deleteTodo(this.todo);
     },
     doneUndoneTodo() {
-      this.todo.done = !this.todo.done;
+      todoBus.markDoneUndone({ name: this.todo.name, done: !this.todo.done });
     },
   },
 };
@@ -27,6 +27,13 @@ export default {
 .card {
   margin-left: 5px;
   margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 350px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-actions {
@@ -35,9 +42,12 @@ export default {
 
 .card-title {
   margin-top: 30px;
+  color: #aaa;
 }
 
 .done {
+  border-left: 12px solid green !important;
   background-color: seagreen !important;
+  text-decoration: line-through !important;
 }
 </style>

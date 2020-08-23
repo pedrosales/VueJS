@@ -13,6 +13,12 @@ export default new Vue({
         },
         onTodoAdded(callback) {
             this.$on("todoAdded", callback);
+        },
+        markDoneUndone(todo) {
+            this.$emit("doneUndoneMarked", todo);
+        },
+        onDoneUndoneChecked(callback) {
+            this.$on("doneUndoneMarked", callback);
         }
     }
 });
