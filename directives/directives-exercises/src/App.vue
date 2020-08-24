@@ -5,13 +5,21 @@
     <p v-text="'Using directives'"></p>
     <p v-html="'Using directive <strong>v-html</strong>'"></p>
     <hr />
-    <p v-spotlight>Custom directive</p>
+    <p v-spotlight:background="'lightblue'">Custom directive</p>
+    <p v-spotlight="color">Custom directive</p>
+
+    <!-- <p v-test:args.modifier1.modifier2.modifier3="value"></p> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      color: "blue",
+    };
+  },
 };
 </script>
 
