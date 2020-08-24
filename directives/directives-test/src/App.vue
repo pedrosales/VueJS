@@ -4,11 +4,27 @@
     <hr />
     <!-- Exercício -->
     <!-- Escreva uma diretiva que funcione com o v-on (escute eventos) -->
+    <button v-customEvent:mouseover="callMe">Click me!</button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  directives: {
+    customEvent: {
+      bind(el, binding) {
+        const type = binding.arg;
+
+        el.addEventListener(type, binding.value);
+      },
+    },
+  },
+  methods: {
+    callMe() {
+      console.log("Hello");
+    },
+  },
+};
 </script>
 
 <style>
