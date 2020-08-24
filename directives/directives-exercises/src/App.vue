@@ -8,8 +8,10 @@
     <p v-spotlight:background.delay="'lightblue'">Custom directive</p>
     <p v-spotlight.delay="color">Custom directive</p>
     <hr />
-    <p v-localspotlight:background.delay.switch="'red'">Local custom directive</p>
-    <p v-localspotlight.delay="color">Local custom directive</p>
+    <p
+      v-localspotlight:background.delay.switch="{ color1: 'green', color2: 'red', delay: 2000, interval: 200 }"
+    >Local custom directive</p>
+    <p v-localspotlight.delay="{ color1: 'yellow', delay: 5000 }">Local custom directive</p>
     <!-- <p v-test:args.modifier1.modifier2.modifier3="value"></p> -->
   </div>
 </template>
@@ -30,10 +32,10 @@ export default {
 
         let delay = 0;
 
-        if (binding.modifiers["delay"]) delay = 3000;
+        if (binding.modifiers["delay"]) delay = binding.value.delay;
 
-        const color1 = binding.value;
-        const color2 = "purple";
+        const color1 = binding.value.color1;
+        const color2 = binding.value.color2;
         let currentColor = color1;
 
         setTimeout(() => {
@@ -41,9 +43,9 @@ export default {
             setInterval(() => {
               currentColor = currentColor === color1 ? color2 : color1;
               applyColor(currentColor);
-            }, 1000);
+            }, binding.value.interval);
           } else {
-            applyColor(binding.value);
+            applyColor(binding.value.color1);
           }
         }, delay);
       },
