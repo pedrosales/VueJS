@@ -33,6 +33,9 @@ export default {
       return array.join("");
     },
   },
+  created() {
+    console.log("created - app");
+  },
   data() {
     return {
       cpf: "09275965676",
