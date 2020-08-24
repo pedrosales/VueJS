@@ -1,5 +1,7 @@
 <template>
-  <div id="app"></div>
+  <div id="app" class="container-fluid">
+    <h1>Animations</h1>
+  </div>
 </template>
 
 <script>
@@ -14,5 +16,6 @@ export default {};
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  font-size: 1.5rem;
 }
 </style>
