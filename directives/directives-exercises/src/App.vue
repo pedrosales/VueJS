@@ -8,7 +8,7 @@
     <p v-spotlight:background.delay="'lightblue'">Custom directive</p>
     <p v-spotlight.delay="color">Custom directive</p>
     <hr />
-    <p v-localspotlight:background.delay="'red'">Local custom directive</p>
+    <p v-localspotlight:background.delay.switch="'red'">Local custom directive</p>
     <p v-localspotlight.delay="color">Local custom directive</p>
     <!-- <p v-test:args.modifier1.modifier2.modifier3="value"></p> -->
   </div>
@@ -20,16 +20,30 @@ export default {
   directives: {
     localspotlight: {
       bind(el, binding) {
-        // el.style.backgroundColor = "lightgreen"
+        const applyColor = (color) => {
+          if (binding.arg === "background") {
+            el.style.backgroundColor = color;
+          } else {
+            el.style.color = color;
+          }
+        };
+
         let delay = 0;
 
         if (binding.modifiers["delay"]) delay = 3000;
 
+        const color1 = binding.value;
+        const color2 = "purple";
+        let currentColor = color1;
+
         setTimeout(() => {
-          if (binding.arg === "background") {
-            el.style.backgroundColor = binding.value;
+          if (binding.modifiers["switch"]) {
+            setInterval(() => {
+              currentColor = currentColor === color1 ? color2 : color1;
+              applyColor(currentColor);
+            }, 1000);
           } else {
-            el.style.color = binding.value;
+            applyColor(binding.value);
           }
         }, delay);
       },
