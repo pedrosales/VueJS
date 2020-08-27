@@ -11,6 +11,13 @@
     <transition name="slide" type="animation" appear>
       <b-alert variant="info" show v-show="show">{{ message }}</b-alert>
     </transition>
+    <hr />
+    <transition
+      enter-active-class="animate__animated animate__bounce"
+      leave-active-class="animate__animated animate__shakeX"
+    >
+      <b-alert variant="info" show v-show="show">{{ message }}</b-alert>
+    </transition>
   </div>
 </template>
 
@@ -19,7 +26,7 @@ export default {
   data() {
     return {
       message: "A info alert to the user!",
-      show: true,
+      show: false,
     };
   },
 };
