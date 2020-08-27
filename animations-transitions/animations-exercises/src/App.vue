@@ -4,7 +4,7 @@
     <hr />
     <b-button variant="primary" class="mb-4" @click="show = !show">Show message</b-button>
 
-    <transition name="fade" appear>
+    <!-- <transition name="fade" appear>
       <b-alert variant="info" show v-if="show">{{ message }}</b-alert>
     </transition>
     <hr />
@@ -17,14 +17,15 @@
       leave-active-class="animate__animated animate__shakeX"
     >
       <b-alert variant="info" show v-show="show">{{ message }}</b-alert>
-    </transition>
+    </transition>-->
     <hr />
     <b-select v-model="animationType" class="mb-4">
       <option value="fade">Fade</option>
       <option value="slide">Slide</option>
     </b-select>
-    <transition :name="animationType">
-      <b-alert variant="info" show v-show="show">{{ message }}</b-alert>
+    <transition :name="animationType" mode="out-in">
+      <b-alert variant="info" show v-if="show" key="info">{{ message }}</b-alert>
+      <b-alert variant="warning" show v-else key="warn">{{ message }}</b-alert>
     </transition>
   </div>
 </template>
