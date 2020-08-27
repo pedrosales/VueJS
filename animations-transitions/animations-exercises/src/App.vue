@@ -18,6 +18,14 @@
     >
       <b-alert variant="info" show v-show="show">{{ message }}</b-alert>
     </transition>
+    <hr />
+    <b-select v-model="animationType" class="mb-4">
+      <option value="fade">Fade</option>
+      <option value="slide">Slide</option>
+    </b-select>
+    <transition :name="animationType">
+      <b-alert variant="info" show v-show="show">{{ message }}</b-alert>
+    </transition>
   </div>
 </template>
 
@@ -27,6 +35,7 @@ export default {
     return {
       message: "A info alert to the user!",
       show: false,
+      animationType: "fade",
     };
   },
 };
