@@ -27,6 +27,22 @@
       <b-alert variant="info" show v-if="show" key="info">{{ message }}</b-alert>
       <b-alert variant="warning" show v-else key="warn">{{ message }}</b-alert>
     </transition>
+
+    <hr />
+    <button @click="show2 = !show2">Show</button>
+    <transition
+      :css="false"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @enter-cancelled="enterCancelled"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @leave-cancelled="leaveCancelled"
+    >
+      <div v-if="show2" class="box"></div>
+    </transition>
   </div>
 </template>
 
@@ -37,7 +53,51 @@ export default {
       message: "A info alert to the user!",
       show: false,
       animationType: "fade",
+      show2: true,
+      baseWidth: 0,
     };
+  },
+  methods: {
+    animate(el, done, negative) {
+      let round = 1;
+      const interval = setInterval(() => {
+        const newWidth = this.baseWidth + (negative ? -round * 10 : round * 10);
+        el.style.width = `${newWidth}px`;
+
+        if (round > 30) {
+          clearInterval(interval);
+          done();
+        }
+
+        round++;
+      }, 20);
+    },
+    beforeEnter(el) {
+      this.baseWidth = 0;
+      el.style.width = `${this.baseWidth}px`;
+    },
+    enter(el, done) {
+      this.animate(el, done, false);
+    },
+    afterEnter(el) {
+      console.log("after enter", el);
+    },
+    enterCancelled(el) {
+      console.log("enter cancelled", el);
+    },
+    beforeLeave(el) {
+      this.baseWidth = 300;
+      el.style.width = `${this.baseWidth}px`;
+    },
+    leave(el, done) {
+      this.animate(el, done, true);
+    },
+    afterLeave(el) {
+      console.log("after leave", el);
+    },
+    leaveCancelled(el) {
+      console.log("leave cancelled", el);
+    },
   },
 };
 </script>
@@ -101,5 +161,12 @@ export default {
 .slide-enter,
 .slide-leave-to {
   opacity: 0;
+}
+
+.box {
+  height: 100px;
+  width: 300px;
+  margin: 30px auto;
+  background-color: lightgreen;
 }
 </style>
