@@ -43,11 +43,23 @@
     >
       <div v-if="show2" class="box"></div>
     </transition>
+    <hr />
+    <div class="mb-4">
+      <b-button @click="selectedAlert = 'InfoAlert'" class="mr-2" variant="primary">Info Alert</b-button>
+      <b-button @click="selectedAlert = 'WarningAlert'" variant="secondary">Warning Alert</b-button>
+    </div>
+    <transition name="fade" mode="out-in">
+      <component :is="selectedAlert"></component>
+    </transition>
   </div>
 </template>
 
 <script>
+import WarningAlert from "./components/WarningAlert.vue";
+import InfoAlert from "./components/InfoAlert.vue";
+
 export default {
+  components: { WarningAlert, InfoAlert },
   data() {
     return {
       message: "A info alert to the user!",
@@ -55,6 +67,7 @@ export default {
       animationType: "fade",
       show2: true,
       baseWidth: 0,
+      selectedAlert: "InfoAlert",
     };
   },
   methods: {
