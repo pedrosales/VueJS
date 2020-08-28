@@ -18,7 +18,7 @@
     >
       <b-alert variant="info" show v-show="show">{{ message }}</b-alert>
     </transition>-->
-    <hr />
+    <!-- <hr />
     <b-select v-model="animationType" class="mb-4">
       <option value="fade">Fade</option>
       <option value="slide">Slide</option>
@@ -43,7 +43,7 @@
     >
       <div v-if="show2" class="box"></div>
     </transition>
-    <hr />
+    <hr />-->
     <div class="mb-4">
       <b-button @click="selectedAlert = 'InfoAlert'" class="mr-2" variant="primary">Info Alert</b-button>
       <b-button @click="selectedAlert = 'WarningAlert'" variant="secondary">Warning Alert</b-button>
@@ -51,6 +51,13 @@
     <transition name="fade" mode="out-in">
       <component :is="selectedAlert"></component>
     </transition>
+    <hr />
+    <b-button @click="addStudent" class="mb-4">Add student</b-button>
+    <transition-group name="slide" tag="div">
+      <b-list-group v-for="(student, i) in students" :key="student">
+        <b-list-group-item @click="removeStudent(i)">{{ student }}</b-list-group-item>
+      </b-list-group>
+    </transition-group>
   </div>
 </template>
 
@@ -62,6 +69,7 @@ export default {
   components: { WarningAlert, InfoAlert },
   data() {
     return {
+      students: ["Roberto", "Julia", "Teresa", "Paulo"],
       message: "A info alert to the user!",
       show: false,
       animationType: "fade",
@@ -110,6 +118,14 @@ export default {
     },
     leaveCancelled(el) {
       console.log("leave cancelled", el);
+    },
+    addStudent() {
+      const s = Math.random().toString(36).substring(2);
+      this.students.push(s);
+    },
+    removeStudent(index) {
+      console.log(index);
+      this.students.splice(index, 1);
     },
   },
 };
@@ -167,6 +183,8 @@ export default {
 }
 
 .slide-leave-active {
+  position: absolute;
+  width: 100%;
   animation: slide-out 2s ease;
   transition: opacity 2s;
 }
@@ -174,6 +192,10 @@ export default {
 .slide-enter,
 .slide-leave-to {
   opacity: 0;
+}
+
+.slide-move {
+  transition: transform 1s;
 }
 
 .box {
