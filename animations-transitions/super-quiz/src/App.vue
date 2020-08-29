@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <h1>Super Quiz</h1>
-    <Result v-if="showResult" :result="result" @confirmed="nextQuestion()" />
-    <Question v-else :question="questions[currentQuestion]" @answered="showQuestionResult($event)" />
+    <transition name="flip" mode="out-in">
+      <Result v-if="showResult" :result="result" @confirmed="nextQuestion" />
+      <Question v-else :question="questions[currentQuestion]" @answered="showQuestionResult" />
+    </transition>
   </div>
 </template>
 
@@ -14,7 +16,6 @@ import questions from "./util/questions";
 export default {
   components: { Result, Question },
   methods: {
-    returnQuiz() {},
     showQuestionResult(answer) {
       this.result = answer.correct;
       this.showResult = true;
