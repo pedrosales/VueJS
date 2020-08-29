@@ -15,11 +15,23 @@
 
 <script>
 export default {
-  data() {
-    return {
-      quantity: 0,
-      price: 0,
-    };
+  computed: {
+    quantity: {
+      get() {
+        return this.$store.state.quantity;
+      },
+      set(value) {
+        this.$store.commit("setQuantity", value);
+      },
+    },
+    price: {
+      get() {
+        return this.$store.state.price;
+      },
+      set(value) {
+        this.$store.commit("setPrice", value);
+      },
+    },
   },
 };
 </script>

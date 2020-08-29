@@ -20,9 +20,15 @@ export default {
   data() {
     return {
       sequence: 1,
-      quantity: 1,
-      price: 9.99,
     };
+  },
+  computed: {
+    quantity() {
+      return this.$store.state.quantity;
+    },
+    price() {
+      return this.$store.state.price;
+    },
   },
   methods: {
     ...mapActions(["addProduct"]),
