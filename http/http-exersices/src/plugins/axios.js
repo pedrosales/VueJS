@@ -13,6 +13,20 @@ Vue.use({
         Vue.prototype.$http.interceptors.request.use(config => {
             console.log(config.method);
             return config;
-        });
+        }, error => Promise.reject(error));
+
+        Vue.prototype.$http.interceptors.response.use(response => {
+            // let array = [];
+
+            // for (let chave in response.data) {
+            //     array.push({
+            //         id: chave,
+            //         ...response.data[chave]
+            //     });
+            // }
+
+            // response.data = array;
+            return response;
+        }, error => Promise.reject(error));
     }
 });
