@@ -27,7 +27,10 @@ export default {
   },
   methods: {
     save() {
-      console.log(this.user);
+      this.$http.post("users.json", this.user).then(() => {
+        this.user.name = "";
+        this.user.email = "";
+      });
     },
   },
   // created() {
