@@ -1,9 +1,33 @@
 <template>
-  <div class="question"></div>
+  <div class="question">
+    <span>{{ question.text }}</span>
+    <ul class="answers">
+      <li
+        v-for="(answer, index) in question.answers"
+        :key="answer.text"
+        @click="$emit('answered', answer)"
+      >
+        <span class="number">{{ index + 1 }}</span>
+        <span class="text">{{ answer.text }}</span>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    question: {
+      type: Object,
+      required: true,
+    },
+  },
+  //   methods: {
+  //     answered(answer) {
+  //       this.$emit("answered", answer);
+  //     },
+  //   },
+};
 </script>
 
 <style>
@@ -11,7 +35,7 @@ export default {};
   height: 400px;
   color: #000;
   background-color: #fff;
-  width: 70%;
+  width: 100%;
   border-radius: 20px;
   font-size: 2.5rem;
 

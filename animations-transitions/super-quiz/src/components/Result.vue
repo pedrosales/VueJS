@@ -1,9 +1,21 @@
 <template>
-  <div class="result"></div>
+  <div class="result" :class="{wrong: !result}">
+    <span v-if="result">Right answer! =)</span>
+    <span v-else>Wrong answer! =(</span>
+    <hr />
+    <button @click="$emit('confirmed')">Next question</button>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    result: {
+      type: Boolean,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style>
@@ -11,7 +23,7 @@ export default {};
   height: 400px;
   color: #000;
   background-color: #fff;
-  width: 70%;
+  width: 100%;
   border-radius: 20px;
   font-size: 5.5rem;
 

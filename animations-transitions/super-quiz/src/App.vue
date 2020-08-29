@@ -1,11 +1,39 @@
 <template>
   <div id="app">
     <h1>Super Quiz</h1>
+    <Result v-if="showResult" :result="result" @confirmed="nextQuestion()" />
+    <Question v-else :question="questions[currentQuestion]" @answered="showQuestionResult($event)" />
   </div>
 </template>
 
 <script>
-export default {};
+import Result from "./components/Result.vue";
+import Question from "./components/Question.vue";
+import questions from "./util/questions";
+
+export default {
+  components: { Result, Question },
+  methods: {
+    returnQuiz() {},
+    showQuestionResult(answer) {
+      this.result = answer.correct;
+      this.showResult = true;
+    },
+    nextQuestion() {
+      this.showResult = false;
+      const random = Math.random() * this.questions.length;
+      this.currentQuestion = parseInt(random);
+    },
+  },
+  data() {
+    return {
+      result: true,
+      showResult: false,
+      questions,
+      currentQuestion: 0,
+    };
+  },
+};
 </script>
 
 <style>
