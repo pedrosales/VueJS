@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="container">
     <h1>HTTP com Axios</h1>
+    <b-alert show dismissible v-for="msg in msgs" :key="msg.text" :variant="msg.type">{{ msg.text }}</b-alert>
     <b-card>
       <b-form-group label="Name:">
         <b-form-input type="text" size="lg" v-model="user.name" placeholder="Name"></b-form-input>
@@ -36,6 +37,7 @@ export default {
   name: "App",
   data() {
     return {
+      msgs: [],
       users: [],
       id: null,
       user: {
@@ -48,20 +50,33 @@ export default {
     clean() {
       this.user = {};
       this.id = null;
+      this.msgs = [];
     },
     edit(id) {
       this.id = id;
       this.user = { ...this.users[id] };
     },
     deleteUser(id) {
-      this.$http.delete(`/users/${id}.json`).then(() => this.clean());
+      this.$http
+        .delete(`/users/${id}.json`)
+        .then(() => this.clean())
+        .catch(() => {
+          this.msgs.push({
+            text: "Error!",
+            type: "danger",
+          });
+        });
     },
     save() {
       const method = this.id ? "patch" : "post";
       const endUrl = this.id ? `/${this.id}.json` : ".json";
-      this.$http[method](`/users/${endUrl}`, this.user).then(() =>
-        this.clean()
-      );
+      this.$http[method](`/users/${endUrl}`, this.user).then(() => {
+        this.clean();
+        this.msgs.push({
+          text: "User added",
+          type: "success",
+        });
+      });
     },
     getUsers() {
       this.$http.get("users.json").then((response) => {
