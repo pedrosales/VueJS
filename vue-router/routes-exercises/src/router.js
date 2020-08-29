@@ -5,12 +5,17 @@ import Index from "./components/IndexComponent";
 import Menu from "./components/template/Menu";
 import MenuAlt from "./components/template/MenuAlt";
 
-import User from "./components/user/User";
-import UserList from "./components/user/UserList";
-import UserDetails from "./components/user/UserDetails";
-import UserEdit from "./components/user/UserEdit";
+// import User from "./components/user/User";
+// import UserList from "./components/user/UserList";
+// import UserDetails from "./components/user/UserDetails";
+// import UserEdit from "./components/user/UserEdit";
 
 Vue.use(Router);
+
+const User = () => import( /* webpackChunkName: "user" */ "./components/user/User");
+const UserList = () => import( /* webpackChunkName: "user" */ "./components/user/UserList");
+const UserDetails = () => import( /* webpackChunkName: "user" */ "./components/user/UserDetails");
+const UserEdit = () => import( /* webpackChunkName: "user" */ "./components/user/UserEdit");
 
 const router = new Router({
     mode: "history",
