@@ -1,12 +1,35 @@
 <template>
   <div id="app" class="container">
     <h1>HTTP com Axios</h1>
+    <b-card>
+      <b-form-group label="Name:">
+        <b-form-input type="text" size="lg" v-model="user.name" placeholder="Name"></b-form-input>
+      </b-form-group>
+      <b-form-group label="E-mail:">
+        <b-form-input type="email" size="lg" v-model="user.email" placeholder="E-mail"></b-form-input>
+      </b-form-group>
+      <hr />
+      <b-button @click="save" size="lg" variant="primary">Save</b-button>
+    </b-card>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      user: {
+        name: "",
+        email: "",
+      },
+    };
+  },
+  methods: {
+    save() {
+      console.log(this.user);
+    },
+  },
   // created() {
   //   this.$http
   //     .post("usuarios.json", {
@@ -23,9 +46,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  font-size: 1.5rem;
 }
 
 #app h1 {
