@@ -9,7 +9,7 @@
     <router-link
       tag="button"
       primary
-      :to="{ name: 'userEdit', params: { id }, query: { full: true, language: 'en' } }"
+      :to="{ name: 'userEdit', params: { id }, query: { full: true, language: 'en' }, hash: '#footer' }"
     >Edit</router-link>
     <!-- <router-link tag="button" primary :to="`/users/${id}/edit`">Edit</router-link> -->
     <!-- <router-link tag="button" primary :to="`/users/${$route.params.id}/edit`">Edit</router-link> -->

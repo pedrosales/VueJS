@@ -13,6 +13,9 @@
       <strong>Language:</strong>
       {{ $route.query.language }}
     </p>
+    <div id="footer">
+      <h3>Vue</h3>
+    </div>
   </div>
 </template>
 
@@ -23,4 +26,7 @@ export default {
 </script>
 
 <style>
+#footer {
+  margin-top: 2000px;
+}
 </style>
