@@ -47,5 +47,8 @@ export default new Router({
                 name: "userEdit"
             }
         ]
+    }, {
+        path: "/redirect",
+        redirect: "/users"
     }]
 });
