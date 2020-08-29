@@ -2,12 +2,26 @@
   <div class="user">
     <h2>Users</h2>
     <hr />
+    <p>
+      <strong>Id:</strong>
+      {{ id }}
+    </p>
     <button success @click="backIndex">Return</button>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      id: this.$route.params.id,
+    };
+  },
+  watch: {
+    $route(to) {
+      this.id = to.params.id;
+    },
+  },
   methods: {
     backIndex() {
       //   this.$router.push("/");
