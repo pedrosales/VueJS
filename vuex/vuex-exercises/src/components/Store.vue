@@ -31,7 +31,8 @@ export default {
         price: this.price,
       };
       this.sequence++;
-      console.log(product);
+
+      this.$store.state.products.push(product);
     },
   },
 };
