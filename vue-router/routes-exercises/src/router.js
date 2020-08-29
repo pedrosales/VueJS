@@ -14,7 +14,8 @@ export default new Router({
     mode: "history",
     routes: [{
         path: "/",
-        component: Index
+        component: Index,
+        name: "index"
     }, {
         path: "/users",
         component: User,
@@ -31,7 +32,8 @@ export default new Router({
             {
                 path: ":id/edit",
                 component: UserEdit,
-                props: true
+                props: true,
+                name: "userEdit"
             }
         ]
     }]

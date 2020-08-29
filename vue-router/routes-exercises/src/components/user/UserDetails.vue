@@ -6,7 +6,8 @@
       <strong>Id:</strong>
       {{ id }}
     </p>
-    <router-link tag="button" primary :to="`/users/${id}/edit`">Edit</router-link>
+    <router-link tag="button" primary :to="{ name: 'userEdit', params: { id } }">Edit</router-link>
+    <!-- <router-link tag="button" primary :to="`/users/${id}/edit`">Edit</router-link> -->
     <!-- <router-link tag="button" primary :to="`/users/${$route.params.id}/edit`">Edit</router-link> -->
   </div>
 </template>
