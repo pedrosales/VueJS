@@ -3,7 +3,7 @@
     <h3>User Edit</h3>
     <p>
       <strong>Id:</strong>
-      {{ id }}
+      {{ id }} {{ $route.params.id }}
     </p>
   </div>
 </template>
