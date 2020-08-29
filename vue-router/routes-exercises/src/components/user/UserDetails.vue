@@ -19,6 +19,14 @@
 <script>
 export default {
   props: ["id"],
+  beforeRouteEnter(to, from, next) {
+    console.log("before inside component");
+    // next((vm) => {
+    //   console.log(vm.id);
+    // });
+    const auth = true;
+    auth ? next() : next(false);
+  },
 };
 </script>
 

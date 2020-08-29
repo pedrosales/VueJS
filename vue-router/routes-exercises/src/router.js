@@ -12,7 +12,7 @@ import UserEdit from "./components/user/UserEdit";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
     mode: "history",
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
@@ -57,7 +57,11 @@ export default new Router({
                 {
                     path: ":id",
                     component: UserDetails,
-                    props: true
+                    props: true,
+                    beforeEnter: (to, from, next) => {
+                        console.log("before route -> user details");
+                        next();
+                    }
                 },
                 {
                     path: ":id/edit",
@@ -76,3 +80,10 @@ export default new Router({
         }
     ]
 });
+
+router.beforeEach((to, from, next) => {
+    console.log("before global");
+    next();
+});
+
+export default router;

@@ -13,6 +13,8 @@
       <strong>Language:</strong>
       {{ $route.query.language }}
     </p>
+    <hr />
+    <button primary>Confirm</button>
     <div id="footer">
       <h3>Vue</h3>
     </div>
