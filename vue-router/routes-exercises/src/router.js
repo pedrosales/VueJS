@@ -2,6 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import Index from "./components/IndexComponent";
+import Menu from "./components/template/Menu";
+import MenuAlt from "./components/template/MenuAlt";
 
 import User from "./components/user/User";
 import UserList from "./components/user/UserList";
@@ -14,11 +16,20 @@ export default new Router({
     mode: "history",
     routes: [{
         path: "/",
-        component: Index,
-        name: "index"
+        //component: Index,
+        name: "index",
+        components: {
+            default: Index,
+            menu: Menu
+        }
     }, {
         path: "/users",
-        component: User,
+        //component: User,
+        components: {
+            default: User,
+            menu: MenuAlt,
+            menuBottom: MenuAlt
+        },
         props: true,
         children: [{
                 path: "",
