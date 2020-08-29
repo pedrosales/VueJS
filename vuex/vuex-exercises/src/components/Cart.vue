@@ -40,7 +40,7 @@ export default {
     //   return this.$store.getters.totalValue;
     // },
     products() {
-      return this.$store.state.products;
+      return this.$store.state.cart.products;
     },
   },
 };

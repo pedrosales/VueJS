@@ -24,10 +24,10 @@ export default {
   },
   computed: {
     quantity() {
-      return this.$store.state.quantity;
+      return this.$store.state.parameters.quantity;
     },
     price() {
-      return this.$store.state.price;
+      return this.$store.state.parameters.price;
     },
   },
   methods: {
