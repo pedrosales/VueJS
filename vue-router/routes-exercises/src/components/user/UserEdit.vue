@@ -5,6 +5,14 @@
       <strong>Id:</strong>
       {{ id }} {{ $route.params.id }}
     </p>
+    <p>
+      <strong>Full:</strong>
+      {{ $route.query.full ? 'yes' : 'no' }}
+    </p>
+    <p>
+      <strong>Language:</strong>
+      {{ $route.query.language }}
+    </p>
   </div>
 </template>
 
