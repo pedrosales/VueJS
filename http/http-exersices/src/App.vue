@@ -23,6 +23,9 @@
         <br />
         <strong>Id:</strong>
         {{ id }}
+        <br />
+        <b-button variant="warning" size="lg" @click="edit(id)">Edit</b-button>
+        <b-button variant="danger" size="lg" class="ml-2" @click="deleteUser(id)">Delete</b-button>
       </b-list-group-item>
     </b-list-group>
   </div>
@@ -34,6 +37,7 @@ export default {
   data() {
     return {
       users: [],
+      id: null,
       user: {
         name: "",
         email: "",
@@ -41,11 +45,23 @@ export default {
     };
   },
   methods: {
+    clean() {
+      this.user = {};
+      this.id = null;
+    },
+    edit(id) {
+      this.id = id;
+      this.user = { ...this.users[id] };
+    },
+    deleteUser(id) {
+      this.$http.delete(`/users/${id}.json`).then(() => this.clean());
+    },
     save() {
-      this.$http.post("users.json", this.user).then(() => {
-        this.user.name = "";
-        this.user.email = "";
-      });
+      const method = this.id ? "patch" : "post";
+      const endUrl = this.id ? `/${this.id}.json` : ".json";
+      this.$http[method](`/users/${endUrl}`, this.user).then(() =>
+        this.clean()
+      );
     },
     getUsers() {
       this.$http.get("users.json").then((response) => {
