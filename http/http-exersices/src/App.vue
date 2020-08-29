@@ -7,6 +7,14 @@
 <script>
 export default {
   name: "App",
+  // created() {
+  //   this.$http
+  //     .post("usuarios.json", {
+  //       name: "Pedro",
+  //       email: "pedro@qontecnologia.com",
+  //     })
+  //     .then((response) => console.log(response));
+  // },
 };
 </script>
 
