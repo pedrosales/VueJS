@@ -31,7 +31,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["addProduct"]),
+    ...mapActions("cart", ["addProduct"]),
     add() {
       const product = {
         id: this.sequence,
