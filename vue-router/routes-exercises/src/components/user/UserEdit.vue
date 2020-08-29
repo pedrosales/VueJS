@@ -14,7 +14,7 @@
       {{ $route.query.language }}
     </p>
     <hr />
-    <button primary>Confirm</button>
+    <button primary @click="confirmExit = true">Confirm</button>
     <div id="footer">
       <h3>Vue</h3>
     </div>
@@ -24,6 +24,20 @@
 <script>
 export default {
   props: ["id"],
+  data() {
+    return {
+      confirmExit: false,
+    };
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.confirmExit) {
+      next();
+    } else if (confirm("Are you shure?")) {
+      next();
+    } else {
+      next(false);
+    }
+  },
 };
 </script>
 
