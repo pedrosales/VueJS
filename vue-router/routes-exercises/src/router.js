@@ -15,40 +15,45 @@ Vue.use(Router);
 export default new Router({
     mode: "history",
     routes: [{
-        path: "/",
-        //component: Index,
-        name: "index",
-        components: {
-            default: Index,
-            menu: Menu
-        }
-    }, {
-        path: "/users",
-        //component: User,
-        components: {
-            default: User,
-            menu: MenuAlt,
-            menuBottom: MenuAlt
-        },
-        props: true,
-        children: [{
-                path: "",
-                component: UserList
-            },
-            {
-                path: ":id",
-                component: UserDetails,
-                props: true
-            },
-            {
-                path: ":id/edit",
-                component: UserEdit,
-                props: true,
-                name: "userEdit"
+            path: "/",
+            //component: Index,
+            name: "index",
+            components: {
+                default: Index,
+                menu: Menu
             }
-        ]
-    }, {
-        path: "/redirect",
-        redirect: "/users"
-    }]
+        }, {
+            path: "/users",
+            //component: User,
+            components: {
+                default: User,
+                menu: MenuAlt,
+                menuBottom: MenuAlt
+            },
+            props: true,
+            children: [{
+                    path: "",
+                    component: UserList
+                },
+                {
+                    path: ":id",
+                    component: UserDetails,
+                    props: true
+                },
+                {
+                    path: ":id/edit",
+                    component: UserEdit,
+                    props: true,
+                    name: "userEdit"
+                }
+            ]
+        }, {
+            path: "/redirect",
+            redirect: "/users"
+        },
+        {
+            path: "*",
+            redirect: "/"
+        }
+    ]
 });
